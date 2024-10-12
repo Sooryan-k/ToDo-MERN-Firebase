@@ -15,25 +15,25 @@ const TodoForm = () => {
 
   const fetchTodos = async () => {
     if (auth.currentUser) {
-      const response = await axios.get(`http://localhost:5030/api/todoapp/getnotes/${auth.currentUser.uid}`);
+      const response = await axios.get(`https://todo-mern-firebase.onrender.com/api/todoapp/getnotes/${auth.currentUser.uid}`);
       setTodos(response.data);
     }
   };
 
   const deleteTodo = async (id) => {
-    await axios.delete(`http://localhost:5030/api/todoapp/deletetodo/${id}`);
+    await axios.delete(`https://todo-mern-firebase.onrender.com/api/todoapp/deletetodo/${id}`);
     fetchTodos();
   };
 
   const updateTodoCompletion = async (id, completed) => {
-    await axios.put(`http://localhost:5030/api/todoapp/updatetodo/${id}`, { completed });
+    await axios.put(`https://todo-mern-firebase.onrender.com/api/todoapp/updatetodo/${id}`, { completed });
     fetchTodos();
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (description) {
-      await axios.post('http://localhost:5030/api/todoapp/addtodo', {
+      await axios.post('https://todo-mern-firebase.onrender.com/api/todoapp/addtodo', {
         description,
         userId: auth.currentUser.uid 
       });
