@@ -87,7 +87,7 @@ const TodoForm = () => {
       </form>
       <List sx={{ width: '100%', maxWidth: 500, bgcolor: isDarkMode ? '#424242' : '#fff', borderRadius: 1, mt: 2 }}>
         {todos.map((todo) => (
-          <ListItem key={todo._id} divider>
+          <ListItem key={todo._id} divider sx={{ flexDirection: { xs: 'column', sm: 'row' }, alignItems: { xs: 'flex-start', sm: 'center' } }}>
             <Checkbox
               checked={todo.completed}
               onChange={(e) => updateTodoCompletion(todo._id, e.target.checked)}
@@ -111,9 +111,10 @@ const TodoForm = () => {
                   )}
                 </>
               }
+              sx={{ flex: 1 }} // Allow text to take available space
             />
             <Button
-              sx={{ marginLeft: 2, bgcolor: isDarkMode ? '#D32F2F' : '#D32F2F', color: '#fff' }} // Set Delete button color 
+              sx={{ marginLeft: { xs: 0, sm: 2 }, marginTop: { xs: 1, sm: 0 }, bgcolor: isDarkMode ? '#D32F2F' : '#D32F2F', color: '#fff' }} // Set Delete button color 
               variant="outlined"
               startIcon={<DeleteIcon />}
               onClick={() => deleteTodo(todo._id)}
